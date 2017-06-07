@@ -1,0 +1,20 @@
+{
+	"name": "balancer/infonesy-driver-zeroblog",
+	"description": "Infonesy ZeroBlog driver",
+	"authors": [
+		{
+			"name": "Roman =Balancer= Karshiev",
+			"email": "balancer@balancer.ru"
+		}
+	],
+
+	"require": {
+		"balancer/bors-core": "*"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"Infonesy\\Drivers\\": "src/"
+		}
+	}
+}
