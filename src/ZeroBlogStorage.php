@@ -23,14 +23,23 @@ class ZeroBlogStorage extends \B2\Obj
 
 		$blog_data = json_decode(file_get_contents($this->blog_dir().'/data/data.json'));
 
+		$blog = new ZeroBlog($blog_zero_id);
+		$blog->set('title', $blog_data->title);
+		$blog->set('description', $blog_data->description);
+		$blog->set('links', $blog_data->links);
+		$blog->set('modify_time',  $blog_data->modified);
+
 		$result = [];
 		foreach($blog_data->post as $d)
 		{
-			$x = new ZeroBlog($d->post_id);
+			$x = new ZeroBlogPost($d->post_id);
 			$x->set('zero_id', $blog_zero_id);
 			$x->set('title', $d->title);
-			$x->set('create_time', intval($d->date_published+0.5));
+			$x->set('create_time', round($d->date_published));
 			$x->set('source', $d->body);
+
+			$x->set('infonesy_container', $blog);
+			$x->set('infonesy_node', $blog);
 
 			$result[] = $x;
 		}

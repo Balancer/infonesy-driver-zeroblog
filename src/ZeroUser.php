@@ -2,7 +2,7 @@
 
 namespace Infonesy\Drivers;
 
-class ZeroBlog extends \B2\Obj
+class ZeroUser extends \B2\Obj
 {
 	function infonesy_uuid()
 	{
