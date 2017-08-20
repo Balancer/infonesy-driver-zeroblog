@@ -36,7 +36,12 @@ class ZeroBlogStorage extends \B2\Obj
 			$x->set('zero_id', $blog_zero_id);
 			$x->set('title', $d->title);
 			$x->set('create_time', round($d->date_published));
-			$x->set('source', $d->body);
+
+			$text = $d->body;
+
+			$text = preg_replace("!\]\(data/img/post!", '](https://www.zerogate.tk/'.$blog_zero_id.'/data/img/post', $text);
+
+			$x->set('source', $text);
 
 			$x->set('infonesy_container', $blog);
 			$x->set('infonesy_node', $blog);
