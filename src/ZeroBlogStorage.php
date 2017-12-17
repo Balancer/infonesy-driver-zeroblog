@@ -47,6 +47,7 @@ class ZeroBlogStorage extends \B2\Obj
 			$text = preg_replace("!\]\((/\w{33,34}/)!", '](https://www.zerogate.tk$1', $text);
 			$text = str_replace('http://127.0.0.1:43110/', 'https://www.zerogate.tk/', $text);
 			$text = preg_replace('!(^| )(https?://\S+?)( |$)!m', '$1<$2>$3', $text);
+			$text = preg_replace("! src=\"(/\w{34}/[^\"]+?\.(mp4))\"!", ' src=https://www.zerogate.tk$1', $text);
 
 			$x->set('source', $text);
 
