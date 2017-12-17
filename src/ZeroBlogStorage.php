@@ -40,6 +40,7 @@ class ZeroBlogStorage extends \B2\Obj
 			$text = $d->body;
 
 			$text = preg_replace("!\]\(data/img/post!", '](https://www.zerogate.tk/'.$blog_zero_id.'/data/img/post', $text);
+			$text = preg_replace("! src=\"(/\w{34}/[^\"]+?\.(mp4))\"!", ' src=https://www.zerogate.tk$1', $text);
 
 			$x->set('source', $text);
 
