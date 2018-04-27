@@ -49,6 +49,11 @@ class ZeroBlogStorage extends \B2\Obj
 			$text = preg_replace('!(^| )(https?://\S+?)( |$)!m', '$1<$2>$3', $text);
 			$text = preg_replace("! src=\"(/\w{34}/[^\"]+?\.(mp4))\"!", ' src="https://www.zerogate.tk$1"', $text);
 			$text = preg_replace("! src=\"cors-(\w{34}/[^\"]+?\.(mp4))\"!", ' src="https://www.zerogate.tk/$1"', $text);
+			$text = preg_replace("! src=\"(data/[^\"]+?\.(mp4))\"!", ' src="https://www.zerogate.tk/'.$blog_zero_id.'/$1"', $text);
+
+			$text = preg_replace_callback("!(<video .*?</video>)!s", function($m) {
+				return str_replace("\n", "", $m[1]);
+			}, $text);
 
 			$x->set('source', $text);
 
