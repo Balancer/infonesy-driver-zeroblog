@@ -11,4 +11,9 @@ class ZeroBlogPost extends \B2\Obj
 
 	function infonesy_type() { return 'Blog'; }
 	function infonesy_markup() { return 'Markdown'; }
+
+	var $type = 'Post';
+	var $markup_type = 'Markdown';
+
+	function text() { return $this->source(); }
 }
